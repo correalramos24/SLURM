@@ -8,6 +8,8 @@ srun --cpu_bind=none --nodes=1 --pty bash -i
 ````
 * MN4
 ````bash
-salloc -p debug -c 48 -N 1
+salloc -q debug -N 1 -c 48
+#For enabling the performance counters:
+salloc -q debug -N 1 -c 48 -C perfparanoid
 ````
 
