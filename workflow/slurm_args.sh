@@ -51,14 +51,12 @@ parse_args_slurm() {
 
 check_required_slurm(){
     echo -n "Checking arguments... "
-    if [ -z $SCRIPT ]; then
-        echo "Error: You must set script with --script"
-        exit 1
-    fi
-    if [ -z $WORKDIR ]; then
-        echo "Error: You must set a workdirectory with --workdir"
-        exit 1
-    fi
+    [ -z $SCRIPT ] \
+        && echo "Error: You must set script with --script" \
+        && exit 1
+    [ -z $WORKDIR ] \
+        && echo "Error: You must set a workdirectory with --workdir" \
+        && exit 1
     echo "Done"
 }
 
@@ -66,12 +64,12 @@ submit_and_trace(){
 
     if [[ $SUBMIT_OR_TEST == "SUBMIT" ]]; then
         # Check nodes && queue
-        if [ -z $QUEUE ]; then
-            echo "Error: Queue not set. You must use --queue|-q"
-        fi
-        if [ -z $NODES ]; then
-            echo "Error: Nodes not set. You must use --nodes|-n"
-        fi
+        [ -z $QUEUE ]  \
+            && echo "Error: Queue not set. You must use --queue|-q" \
+            && exit 1
+        [ -z $NODES ] \
+            && echo "Error: Nodes not set. You must use --nodes|-n" \
+            && exit 1
 
         JOB_ID=$(sbatch  -J $JOB_NAME -q $QUEUE \
                 -c $OMP_PER_TASK -n $NUM_TASKS -N $NODES \
