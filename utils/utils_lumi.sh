@@ -4,7 +4,6 @@ export SACCT_FORMAT="ExitCode,JobName%-20,Elapsed,Timelimit,JobId,NNodes,NTasks,
 # queue commands:
 alias squeue='squeue --me'
 alias queue='watch -t -n 1 squeue --me'
-alias wq='watch -t -n 1  ~/.squeue_status.sh'
 alias standard_prio='sprio -S "+Y" -p standard'
 alias info_queue='sinfo -s'
 
