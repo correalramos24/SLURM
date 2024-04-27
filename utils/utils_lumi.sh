@@ -1,7 +1,12 @@
 
+export SACCT_FORMAT="ExitCode,JobName%-20,Elapsed,Timelimit,JobId,NNodes,NTasks,ReqCPUS,Start,NodeList%-100"
+
 # queue commands:
-alias queue='watch -t -n 1 squeue'
+alias squeue='squeue --me'
+alias queue='watch -t -n 1 squeue --me'
 alias wq='watch -t -n 1  ~/.squeue_status.sh'
+alias standard_prio='sprio -S "+Y" -p standard'
+alias info_queue='sinfo -s'
 
 # CATS Project:
 alias sbatch_cats='sbatch --account=project_465000454'
