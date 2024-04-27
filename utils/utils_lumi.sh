@@ -1,7 +1,7 @@
 
 # queue commands:
 alias queue='watch -t -n 1 squeue'
-
+alias wq='watch -t -n 1  ~/.squeue_status.sh'
 
 # CATS Project:
 alias sbatch_cats='sbatch --account=project_465000454'
